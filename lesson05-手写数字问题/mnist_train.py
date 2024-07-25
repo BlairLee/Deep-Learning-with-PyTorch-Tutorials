@@ -16,8 +16,8 @@ batch_size = 512
 train_loader = torch.utils.data.DataLoader(
     torchvision.datasets.MNIST('mnist_data', train=True, download=True,
                                transform=torchvision.transforms.Compose([
-                                   torchvision.transforms.ToTensor(),
-                                   torchvision.transforms.Normalize(
+                                   torchvision.transforms.ToTensor(),  # numpy 转化成tensor
+                                   torchvision.transforms.Normalize(  # 从【0,1】normalization 到0附近
                                        (0.1307,), (0.3081,))
                                ])),
     batch_size=batch_size, shuffle=True)
