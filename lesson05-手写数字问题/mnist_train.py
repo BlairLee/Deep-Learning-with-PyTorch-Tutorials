@@ -80,7 +80,7 @@ for epoch in range(3):
         y_onehot = one_hot(y)
         # loss = mse(out, y_onehot)
         loss = F.mse_loss(out, y_onehot)
-
+        # 清零梯度
         optimizer.zero_grad()
         loss.backward()
         # w' = w - lr*grad
@@ -109,6 +109,7 @@ acc = total_correct / total_num
 print('test acc:', acc)
 
 x, y = next(iter(test_loader))
+
 out = net(x.view(x.size(0), 28*28))
 pred = out.argmax(dim=1)
 plot_image(x, pred, 'test')
